@@ -39,7 +39,7 @@ class Robot : public frc::TimedRobot {
   rev::CANSparkMax m_rightLeadMotor{12,rev::CANSparkMax::MotorType::kBrushless};
   rev::CANSparkMax m_leftFollowMotor{13, rev::CANSparkMax::MotorType::kBrushless};
   rev::CANSparkMax m_rightFollowMotor{14, rev::CANSparkMax::MotorType::kBrushless};
-  frc::DifferentialDrive t_drive(rev::CANSparkMax m_leftLeadMotor, rev::CANSparkMax m_rightLeadMotor);
+  frc::DifferentialDrive t_drive{m_leftLeadMotor, m_rightLeadMotor};
 
   void RobotInit() {
     /**
@@ -60,7 +60,7 @@ class Robot : public frc::TimedRobot {
     /**
      * This function calls the tank drive function
     */
-    frc::DifferentialDrive t_drive.TankDrive(-m_stick.GetY(), m_stick.GetThrottle());
+    t_drive.TankDrive(-m_stick.GetY(), m_stick.GetThrottle(), false);
   
   
   }
