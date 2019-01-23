@@ -32,6 +32,10 @@ class Robot : public frc::TimedRobot {
    * 
    * The example below initializes four brushless motors with CAN IDs 11, 12, 13 and 14. Change
    * these parameters to match your setup
+   * 
+   * Make sure you use the configuration tool to set the proper CAN IDs on the Spark Maxs or this 
+   * won't work.
+   *
    */
 
   frc::Joystick m_stick{0};
@@ -50,6 +54,9 @@ class Robot : public frc::TimedRobot {
      * This is shown in the example below, where one motor on each side of our drive train is
      * configured to follow a lead motor.
      */
+    m_leftFollowMotor.SetInverted(true);
+    m_leftLeadMotor.SetInverted(true);
+  
     m_leftFollowMotor.Follow(m_leftLeadMotor);
     m_rightFollowMotor.Follow(m_rightLeadMotor);
   }
@@ -59,8 +66,10 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override { 
     /**
      * This function calls the tank drive function
+     * Convert the Get* to reflect the proper axis ie. GetX rather than GetThrottle
+     * or GetZ rather than GetY
     */
-    t_drive.TankDrive(-m_stick.GetY(), m_stick.GetThrottle(), false);
+    t_drive.TankDrive(m_stick.GetY(), m_stick.GetThrottle(), false);
   
   
   }
