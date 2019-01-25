@@ -32,11 +32,11 @@ void Command1::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Command1::Execute() {
-    xAxis = Robot::oi->getController()->GetX();
-    yAxis = Robot::oi->getController()->GetY();
-    rotAxis = Robot::oi->getController()->GetZ();
+    xAxis = Robot::oi->getJoystick1()->GetX();
+    yAxis = Robot::oi->getJoystick1()->GetY();
+    rotAxis = Robot::oi->getJoystick1()->GetZ();
 
-    Robot::driveBaseSub->mecanumDrive1(XAxis,YAxis,RotAxis,0);
+    Robot::Subsystem1->mecanumDrive1(XAxis,YAxis,RotAxis,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
