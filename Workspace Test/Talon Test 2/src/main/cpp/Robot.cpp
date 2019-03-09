@@ -24,7 +24,7 @@
 class Robot : public frc::TimedRobot {
  public:
   frc::Joystick m_stick{0};
-  TalonSRX m_motor{11};
+  TalonSRX m_motor{10};
   std::string _sb;
   int _loops = 0;
   bool _lastButton1 = false;
